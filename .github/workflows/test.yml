@@ -1,7 +1,9 @@
-name: Test Retro Game Bot
+name: Daily Retro Game Bot
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "00 19 * * *"
 
 jobs:
   test:
