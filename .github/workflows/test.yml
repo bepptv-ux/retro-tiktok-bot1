@@ -18,11 +18,21 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install voice software
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak-ng
+
       - name: Pick today's game
         run: python src/game_picker.py
 
       - name: Create today's script
         run: python src/script_generator.py
 
-      - name: Show generated script
-        run: cat output/todays_script.txt
+      - name: Create today's voice
+        run: python src/voice_generator.py
+
+      - name: Check generated files
+        run: |
+          echo "Files created:"
+          ls -lh output/
