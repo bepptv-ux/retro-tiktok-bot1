@@ -18,10 +18,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install voice software
+      - name: Install software
         run: |
           sudo apt-get update
-          sudo apt-get install -y espeak-ng
+          sudo apt-get install -y espeak-ng ffmpeg
 
       - name: Pick today's game
         run: python src/game_picker.py
@@ -32,7 +32,10 @@ jobs:
       - name: Create today's voice
         run: python src/voice_generator.py
 
+      - name: Create today's video
+        run: python src/video_generator.py
+
       - name: Check generated files
         run: |
-          echo "Files created:"
+          echo "Generated files:"
           ls -lh output/
