@@ -35,7 +35,16 @@ jobs:
       - name: Create today's video
         run: python src/video_generator.py
 
-      - name: Check generated files
-        run: |
-          echo "Generated files:"
-          ls -lh output/
+      - name: Save today's video
+        uses: actions/upload-artifact@v4
+        with:
+          name: retro-tiktok-video
+          path: output/todays_video.mp4
+          retention-days: 7
+
+      - name: Save script
+        uses: actions/upload-artifact@v4
+        with:
+          name: retro-tiktok-script
+          path: output/todays_script.txt
+          retention-days: 7
