@@ -6,7 +6,7 @@ on:
     - cron: "00 19 * * *"
 
 jobs:
-  test:
+  create-content:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +18,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run game picker
+      - name: Pick today's game
         run: python src/game_picker.py
+
+      - name: Create today's script
+        run: python src/script_generator.py
+
+      - name: Show generated script
+        run: cat output/todays_script.txt
