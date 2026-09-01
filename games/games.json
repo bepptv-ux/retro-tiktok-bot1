@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Contra",
+    "year": 1987,
+    "system": "Arcade / NES",
+    "developer": "Konami",
+    "genre": "Run and Gun"
+  },
+  {
+    "title": "Sonic the Hedgehog",
+    "year": 1991,
+    "system": "Sega Genesis",
+    "developer": "Sega",
+    "genre": "Platformer"
+  },
+  {
+    "title": "Super Mario Bros.",
+    "year": 1985,
+    "system": "NES",
+    "developer": "Nintendo",
+    "genre": "Platformer"
+  },
+  {
+    "title": "Street Fighter II",
+    "year": 1991,
+    "system": "Arcade",
+    "developer": "Capcom",
+    "genre": "Fighting"
+  },
+  {
+    "title": "Mortal Kombat",
+    "year": 1992,
+    "system": "Arcade",
+    "developer": "Midway",
+    "genre": "Fighting"
+  }
+]
