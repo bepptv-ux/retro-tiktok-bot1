@@ -1,45 +1,24 @@
-import json
 import subprocess
 from pathlib import Path
 
-GAMES_FILE = Path("games/games.json")
-USED_FILE = Path("games/used_games.json")
+SCRIPT_FILE = Path("output/todays_script.txt")
 AUDIO_FILE = Path("output/todays_voice.wav")
-VIDEO_FILE = Path("output/todays_video.mp4")
 
-with open(GAMES_FILE, "r", encoding="utf-8") as f:
-    games = json.load(f)
+if not SCRIPT_FILE.exists():
+    print("Script not found.")
+    exit(1)
 
-with open(USED_FILE, "r", encoding="utf-8") as f:
-    used = json.load(f)
-
-game_title = used[-1]
-
-game = next(
-    game for game in games
-    if game["title"] == game_title
-)
+text = SCRIPT_FILE.read_text(encoding="utf-8")
 
 subprocess.run([
-    "ffmpeg",
-    "-y",
-    "-f", "lavfi",
-    "-i", "color=black:s=1080x1920:r=30",
-    "-i", str(AUDIO_FILE),
-    "-vf",
-    "drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:"
-    "text='RETRO GAME OF THE DAY':"
-    "fontsize=60:"
-    "fontcolor=white:"
-    "x=(w-text_w)/2:"
-    "y=300",
-    "-c:v", "libx264",
-    "-pix_fmt", "yuv420p",
-    "-c:a", "aac",
-    "-shortest",
-    str(VIDEO_FILE)
+    "espeak-ng",
+    "-w",
+    str(AUDIO_FILE),
+    "-s", "175",
+    "-p", "35",
+    "-a", "180",
+    text
 ], check=True)
 
-print("Video created successfully!")
-print(game["title"])
-print(VIDEO_FILE)
+print("Male energetic voice created successfully!")
+print(AUDIO_FILE)
