@@ -35,6 +35,11 @@ jobs:
       - name: Create today's video
         run: python src/video_generator.py
 
+      - name: Check video
+        run: |
+          ls -lh output/
+          test -f output/todays_video.mp4
+
       - name: Save today's video
         uses: actions/upload-artifact@v4
         with:
