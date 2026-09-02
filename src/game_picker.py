@@ -7,7 +7,7 @@ USED_FILE = Path("games/used_games.json")
 OUTPUT_FILE = Path("output/todays_game.json")
 
 with open(GAMES_FILE, "r", encoding="utf-8") as f:
-games = json.load(f)
+    games = json.load(f)
 
 if USED_FILE.exists():
 with open(USED_FILE, "r", encoding="utf-8") as f:
